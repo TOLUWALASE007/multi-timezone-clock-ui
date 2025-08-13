@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Custom image aspect ratio handling */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+/* Ensure images maintain quality */
+.city-photo img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Image slider animations */
+.city-photo img {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fallback for older browsers */
+@supports not (aspect-ratio: 16 / 9) {
+  .aspect-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  }
+  
+  .aspect-video img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
